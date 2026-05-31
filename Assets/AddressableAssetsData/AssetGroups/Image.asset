@@ -13,29 +13,17 @@ MonoBehaviour:
   m_Name: Image
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: Image
-  m_GUID: f9473edc99cec8a42ab10649fd901615
+  m_GUID: 88c489d71820ed74b8c20c03edd8d31b
   m_SerializeEntries:
-  - m_GUID: 1d2900a8a853e8a4fab66584617fc14e
-    m_Address: Assets/Image/start_load_bg.png
+  - m_GUID: 1fbdedb26977fb04ab08a25311a03782
+    m_Address: Assets/Image
     m_ReadOnly: 0
     m_SerializedLabels:
-    - UI
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9231ac790cd0d3f4ea2d1a774c8a633d
-    m_Address: Assets/Image/load_progress_bar.png
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - UI
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: cf35a84c7d7d4324f8dae61de58a9ef6
-    m_Address: Assets/Image/load_progress_bar_bg.png
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - UI
+    - Image
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
-  m_Settings: {fileID: 11400000, guid: 3af552cbe6f03bb4ba34103fd212f1e8, type: 2}
+  m_Settings: {fileID: 11400000, guid: 6ad2ca8ba97d5c349bc2ef7b059a285a, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: fcbd1461b13eb6047b66b88a44b6d128, type: 2}
-    - {fileID: 11400000, guid: 45ce3c8ca8983f54e8afe78c1870d6f6, type: 2}
+    - {fileID: 11400000, guid: 049a57fdbab54a5459ef1ed5ff491d3f, type: 2}
+    - {fileID: 11400000, guid: 86ac287acd16b9b41b221c5a44da2ca3, type: 2}

@@ -1,28 +1,41 @@
-using HybridCLR;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
+ï»¿using System.Collections;
 using UnityEngine;
-using UnityEngine.Networking;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class LoadDll : MonoBehaviour
 {
+    // éšä¾¿å¡«ä¸€ä¸ªä½ ç¡®å®šå­˜åœ¨çš„ key
+    private const string TestKey = "Assets/Image/start_load_bg 1.png";
 
-    void Start()
-    {
-        // Editor»·¾³ÏÂ£¬HotUpdate.dll.bytesÒÑ¾­±»×Ô¶¯¼ÓÔØ£¬²»ĞèÒª¼ÓÔØ£¬ÖØ¸´¼ÓÔØ·´¶ø»á³öÎÊÌâ¡£
-#if !UNITY_EDITOR
-        Assembly hotUpdateAss = Assembly.Load(File.ReadAllBytes($"{Application.streamingAssetsPath}/HotUpdate.dll.bytes"));
-#else
-        // EditorÏÂÎŞĞè¼ÓÔØ£¬Ö±½Ó²éÕÒ»ñµÃHotUpdate³ÌĞò¼¯
-        //Assembly hotUpdateAss = System.AppDomain.CurrentDomain.GetAssemblies().First(a => a.GetName().Name == "HotUpdate");
-        Assembly hotUpdateAss = Assembly.Load(File.ReadAllBytes($"{Application.streamingAssetsPath}/StandaloneWindows64/HotUpdate.dll.bytes"));
-#endif
-        Type type = hotUpdateAss.GetType("Hello");
-        type.GetMethod("Run").Invoke(null, null);
-    }
+    private AsyncOperationHandle _initHandle;
+
+    //IEnumerator Start()
+    //{
+    //    Debug.Log("=== å¼€å§‹æµ‹è¯•è¿œç«¯æœåŠ¡å™¨æ˜¯å¦å¯è®¿é—® ===");
+
+    //    // 1. åˆå§‹åŒ–ï¼ˆä¸ä¿å­˜å¥æŸ„ï¼Œä¸æ‰‹åŠ¨ Releaseï¼‰
+    //    yield return Addressables.InitializeAsync();
+    //    Debug.Log("åˆå§‹åŒ–å®Œæˆï¼Œå‡†å¤‡ä¸‹è½½æµ‹è¯•èµ„æº");
+
+    //    // 2. ç”¨ Completed å›è°ƒï¼Œå®Œå…¨ä¸è¯» .Statusï¼ˆæœ€å®‰å…¨ï¼‰
+    //    AsyncOperationHandle downloadHandle = Addressables.DownloadDependenciesAsync(TestKey, true);
+    //    downloadHandle.Completed += OnDownloadDone;
+    //    yield return downloadHandle;
+    //}
+
+    //void OnDownloadDone(AsyncOperationHandle handle)
+    //{
+    //    if (handle.Status == AsyncOperationStatus.Succeeded)
+    //    {
+    //        Debug.Log("<color=green>âœ… è¿œç«¯æœåŠ¡å™¨è®¿é—®æˆåŠŸï¼</color>");
+    //    }
+    //    else
+    //    {
+    //        Debug.LogError($"âŒ ä¸‹è½½å¤±è´¥ï¼š{handle.OperationException}");
+    //    }
+
+    //    // é‡Šæ”¾
+    //    Addressables.Release(handle);
+    //}
 }
