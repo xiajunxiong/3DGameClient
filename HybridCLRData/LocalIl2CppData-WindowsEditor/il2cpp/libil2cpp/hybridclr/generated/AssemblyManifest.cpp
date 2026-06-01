@@ -5,7 +5,7 @@ namespace hybridclr
 	const char* g_placeHolderAssemblies[] =
 	{
 		//!!!{{PLACE_HOLDER
-		"NewAssembly",
+		"HotUpdate",
 
 		//!!!}}PLACE_HOLDER
 		nullptr,

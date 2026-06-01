@@ -5,7 +5,10 @@
     <type fullname="System.ComponentModel.EditorBrowsableAttribute" preserve="all" />
     <type fullname="System.ComponentModel.EditorBrowsableState" preserve="all" />
   </assembly>
-  <assembly fullname="UnityEngine.CoreModule" />
+  <assembly fullname="UnityEngine.CoreModule">
+    <type fullname="UnityEngine.GameObject" preserve="all" />
+    <type fullname="UnityEngine.MonoBehaviour" preserve="all" />
+  </assembly>
   <assembly fullname="mscorlib">
     <type fullname="System.Array" preserve="all" />
     <type fullname="System.Byte" preserve="all" />

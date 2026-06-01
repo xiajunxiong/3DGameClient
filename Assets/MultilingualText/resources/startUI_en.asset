@@ -42,6 +42,22 @@ MonoBehaviour:
     m_Localized: Log In
     m_Metadata:
       m_Items: []
+  - m_Id: 323574400417792
+    m_Localized: Account
+    m_Metadata:
+      m_Items: []
+  - m_Id: 323607438950400
+    m_Localized: Password
+    m_Metadata:
+      m_Items: []
+  - m_Id: 323709922574336
+    m_Localized: Register
+    m_Metadata:
+      m_Items: []
+  - m_Id: 518222532182016
+    m_Localized: Loading...
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

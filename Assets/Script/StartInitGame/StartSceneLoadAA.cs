@@ -10,6 +10,7 @@ using UnityEngine.Localization.Settings;
 using UnityEngine.Localization.Tables;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceLocations;
+using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -26,6 +27,8 @@ public class StartSceneLoadAA : MonoBehaviour
     private long _totalDownloadSize = 0;
     private DateTime _lastTime;
     private long _lastBytesDownloaded = 0;
+    private readonly string _transSceneAddr = "Assets/Scenes/excessive.unity";
+    private AsyncOperationHandle<SceneInstance> _transSceneHandle;
 
     //void OnEnable()
     //{
@@ -46,6 +49,11 @@ public class StartSceneLoadAA : MonoBehaviour
 
     IEnumerator Start()
     {
+        // 加载场景不激活
+        _transSceneHandle = Addressables.LoadSceneAsync(_transSceneAddr, LoadSceneMode.Additive, false);
+        yield return _transSceneHandle;
+        SceneLoadParams.targetSceneName = "login";
+        SceneLoadParams.previousSceneName = "start";
         var zhLocale = LocalizationSettings.AvailableLocales.GetLocale("zh-Hans");
         LocalizationSettings.SelectedLocale = zhLocale;
 
@@ -139,18 +147,11 @@ public class StartSceneLoadAA : MonoBehaviour
             Addressables.Release(downloadHandle);
         }
 
-        string sceneAddress = "Assets/Scenes/login.unity";
-        var sceneLoadHandle = Addressables.LoadSceneAsync(
-            sceneAddress,
-            LoadSceneMode.Single,
-            true 
-        );
-        yield return sceneLoadHandle;
+        yield return _transSceneHandle.Result.ActivateAsync();
 
-        if (sceneLoadHandle.Status != AsyncOperationStatus.Succeeded)
-        {
-            Debug.LogError("登录场景加载失败：" + sceneLoadHandle.OperationException);
-        }
+        yield return new WaitForEndOfFrame();
+
+        SceneManager.UnloadSceneAsync("Start");
     }
 
     static string GetLocalizedString(StringTable table, string entryName)
